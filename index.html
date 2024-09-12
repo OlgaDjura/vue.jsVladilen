@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>VUE.JS</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="card">
+            <h1>{{title}}</h1>
+            <div class="form-control">
+                <input type="text" v-bind:placeholder="placeholderString" v-bind:value="inputValue"
+                v-on:input="inputChengeHander"
+                v-on:keypress.enter="addNewNode">
+            </div>
+            <div>
+                <button class="btn-primary" v-on:click="addNewNode" >Добавить</button>
+                <hr>
+                <ul class="list" v-if="notes.length !== 0">
+                    <li class="list-item" v-for="(myNote, index) in notes">
+                    {{toUpperCase(myNote)}}
+                    <button class="btn denger" v-on:click="removeNote(index)">delet</button>
+                    </li>
+                    <hr>
+                    <li>
+                        <strong>Общее количество: {{notes.length}}</strong>
+                    </li>
+                </ul>
+                <div v-else="notes.length === 0">Заметок пока нет</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
